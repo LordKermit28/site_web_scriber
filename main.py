@@ -102,7 +102,7 @@ if __name__ == '__main__':
                 vacancies = json_saver.delete_vacancy(user_del_vacancies)
                 print(f'Вакансии со словом "{user_del_vacancies}" удалены')
 
-        elif user_input == 'стоп':
+        elif user_input == 'стоп' or 'stop':
             break
 
         else:
