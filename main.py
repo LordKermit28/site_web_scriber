@@ -11,7 +11,7 @@ def hh_vacancy():
 
     vacancies = [Vacancy(
         job_name=item['name'],
-        salary=item['salary']['from'] if item['salary'] else 0,
+        salary=item['salary']['from'] if item['salary']['from'] else 0,
         salary_currency=item['salary']['currency'] if item['salary'] else None,
         description=item['snippet']['responsibility'],
         link=item['alternate_url']
@@ -42,7 +42,6 @@ def sj_vacancy():
 
 
 if __name__ == '__main__':
-
     print('Добрый день, для остановки приложения введите: "стоп", Если вы хотите продолжить работу приложение, то нажмите "Enter"')
 
     while True:
@@ -80,33 +79,25 @@ if __name__ == '__main__':
                     print('Сохранено')
 
         elif user_input == '3':
-            print(
-                'Введите название профессии для поиска или оставте пустую строчку:\n, если нет, то введите Н')
+            print('Введите название профессии для поиска или оставте пустую строчку:\n, если нет, то введите Н')
             user_check_vacancies = input("Введите ключевое слово: ")
 
             if user_check_vacancies.lower() != 'н':
                 json_saver = JsonSaver('file.txt')
-                vacancies = json_saver.get_vacancies(user_check_vacancies)
-                for vacancy in vacancies:
-                    print(f'{vacancy["job_name"]}'
-                          f'{vacancy["description"]}'
-                          f'{vacancy["salary"]} -{vacancy["salary_currency"]}'
-                          f'{vacancy["link"]}\n\n')
+                vacancies = json_saver.get_vacancies(keyword=user_check_vacancies.lower())
+
+                for item in vacancies:
+                    print(item)
 
         elif user_input == '4':
-            print('Введите название профессии для удаления или оставьте пустую строчку если хотите удалить все, если нет, то введите Н')
-            user_del_vacancies = input("Введите ключевое слово: ")
+            record = int(input('Введите номер записи: '))
+            json_saver = JsonSaver('file.txt')
+            json_saver.delete_vacancy(record)
+            print('Запись удалена')
 
-            if user_del_vacancies != 'н' or 'Н':
-                json_saver = JsonSaver('file.txt')
-                vacancies = json_saver.delete_vacancy(user_del_vacancies)
-                print(f'Вакансии со словом "{user_del_vacancies}" удалены')
-
-        elif user_input == 'стоп' or 'stop':
+        stop_app = input('Введите "стоп" чтобы остановить приложение: ')
+        if stop_app.lower() == 'стоп':
             break
-
-        else:
-            print('Введите корректное значение!')
 
 
 

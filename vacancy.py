@@ -8,6 +8,10 @@ class Vacancy:
         self.description = description
         self.link = link
 
+    def __eq__(self, other):
+        if isinstance(other, Vacancy):
+            return self.salary == other.salary
+
     def __gt__(self, other):
         if isinstance(other, Vacancy):
             return self.salary > other.salary
