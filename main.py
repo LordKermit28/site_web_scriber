@@ -11,8 +11,8 @@ def hh_vacancy():
 
     vacancies = [Vacancy(
         job_name=item['name'],
-        salary=item['salary']['from'] if item['salary']['from'] else 0,
-        salary_currency=item['salary']['currency'] if item['salary'] else None,
+        salary=item['salary']['from'] if item['salary'] else 0,
+        salary_currency=item['salary']['currency'] if item['salary']else None,
         description=item['snippet']['responsibility'],
         link=item['alternate_url']
     )
