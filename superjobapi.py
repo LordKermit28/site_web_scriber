@@ -5,6 +5,9 @@ from basic_class import BasicClass
 LINK = "https://api.superjob.ru/2.0/vacancies"
 
 class SuperJobAPI(BasicClass):
+    """Класс для скрайбинга сайта SJ
+    возвращает список вакансий
+    вакансия в json формате"""
 
     def get_request(self, keyword: str, count: int):
         pages = int(count / 1)

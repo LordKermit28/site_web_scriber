@@ -3,7 +3,8 @@ import os
 
 
 class JsonSaver:
-
+    """Класс для работы с файлами
+    сохраняет, выводит и удаляет вакансии"""
     def __init__(self, filename):
         self.__filename = filename
 

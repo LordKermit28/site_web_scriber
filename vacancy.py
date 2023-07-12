@@ -1,6 +1,10 @@
 from urllib.parse import quote
 
 class Vacancy:
+    """Класс для работы с вакансиями
+    приводит их к единому формату и добавлены магические методы
+    для сортировки вакансий по уровню заработной платы
+    """
     def __init__(self, job_name: str, salary: int, description: int, link: str, salary_currency: str):
         self.job_name = job_name
         self.salary = salary

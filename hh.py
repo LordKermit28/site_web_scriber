@@ -5,6 +5,9 @@ from basic_class import BasicClass
 LINK = 'https://api.hh.ru/vacancies'
 
 class HH_API(BasicClass):
+    """Класс для скрайбинга сайта HH
+    возвращает список вакансий
+    вакансия в json формате"""
 
     def get_request(self, keyword: str, count: int):
         pages = int(count/1)
